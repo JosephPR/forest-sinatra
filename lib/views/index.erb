@@ -1,0 +1,10 @@
+<html>
+  <head></head>
+  <body>
+    <ul>
+      <% @trees.each do |tree| %>
+        <li><%= tree.species %> - <%= tree.height %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
