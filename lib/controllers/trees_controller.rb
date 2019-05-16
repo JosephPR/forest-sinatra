@@ -22,32 +22,35 @@ class TreesController < Sinatra::Base
     species:  params[:species],
     height: params[:height]
       })
-      redirect "/trees"
+      redirect "/trees/#{@tree.id}"
   end
 
   # show
   get "/trees/:id" do
-    @tree = Tree.find(params[:id])
+    @tree = Tree.find_by_id(params[:id])
     erb :show
   end
 
-  # edit
+  # load edit form
   get "/trees/:id/edit" do
-    @tree = Tree.find(params[:id])
+    @tree = Tree.find_by_id(params[:id])
     erb :edit
   end
 
-  # update
+  # update(edit)
   patch "/trees/:id" do
     @tree = Tree.find(params[:id])
-    @tree.update(params[:species])
+    @tree.spieces = params[:species]
+    @tree.height  = params[:height]
+    @tree.save
     redirect to "/trees/#{ @tree.id }"
   end
 
   #destroy
-  delete "/trees/:id" do
-    Tree.destroy(params[:id])
-    redirect to "/trees"
+  delete '/articles/:id/delete' do #delete action
+    @tree = Tree.find_by_id(params[:id])
+    @tree.delete
+    redirect to '/trees'
   end
 
 
