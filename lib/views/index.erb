@@ -1,10 +1,21 @@
 <html>
-  <head></head>
+  <head>Tree List</head>
   <body>
+
     <ul>
       <% @trees.each do |tree| %>
-        <li><%= tree.species %> - <%= tree.height %></li>
+        <li>
+        <a href="/trees/<%= tree.id %>">
+           <%= tree.species %>   <%= tree.height %>
+        </a>
+        </li>
       <% end %>
     </ul>
+    <form  action="trees/new">
+      <input type="submit" value="Create New Tree" />
+    </form>
+    <form action="/trees/:id/edit">
+      <input type="submit" value="Edit Tree">
+    </form>
   </body>
 </html>

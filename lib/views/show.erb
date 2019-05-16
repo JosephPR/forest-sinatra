@@ -1,0 +1,7 @@
+<h1><%= @tree.species %></h1>
+<%= @tree.height %>
+
+<form method="post" action="/trees/<%= @tree.id %>">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="delete"/>
+</form>

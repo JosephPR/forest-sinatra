@@ -1,0 +1,15 @@
+<form action="/trees/<%= @tree.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <ul>
+    <li>
+      <label for="title">Species</label>
+      <input id="title" type="text" name="tree[species]" value="<%= @tree.species %>" />
+    </li>
+    <li>
+      <label for="content">Content</label>
+      <textarea id="content" type="number" name="tree[height]"  value="<%= @tree.height %>">
+      </textarea>
+    </li>
+  </ul>
+  <input type="submit" value="EDIT"/>
+</form>
